@@ -39,7 +39,7 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder,  int position) {
         Log.d("tttttt", String.valueOf(categorieslist.size()));
-        holder.tvCategoryListItem.setText(categorieslist.get(position).toString());
+        holder.tvCategoryListItem.setText(categorieslist.get(position).toString().toUpperCase());
         final int position1 = position;
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

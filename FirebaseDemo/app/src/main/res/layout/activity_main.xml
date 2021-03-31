@@ -8,99 +8,86 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/seeCatbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/adminCategories"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Categories" />
+        android:background="#0091EA"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:visibility="gone">
 
         <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
+            android:id="@+id/seeCatSelectAll"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select category to upload"
-            android:textAllCaps="true"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp" />
+            android:layout_weight="1"
+            android:text="Select All"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="40dp" />
-
-        <Button
-            android:id="@+id/choose"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/seeCatDeleteMore"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            android:text="Choose and Upload Images"
-            android:textColor="@android:color/background_light" />
+            android:layout_weight="1"
+            android:text="Delete"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
 
+        <TextView
+            android:id="@+id/seeCatCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Cancel"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:layout_weight="1"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Want to add another category"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/tvAddCategoty"
+            android:id="@+id/admintextView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/aclonica"
             android:gravity="center"
-            android:text="Click Here"
-            android:textColor="@color/colorAccent"
-            android:textSize="18sp" />
+            android:text="Select Any Category \n to add or delete images "
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/admincategoryList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#DFDFDF" />
 
     </LinearLayout>
 
-    <LinearLayout
+
+    <ImageButton
+        android:id="@+id/btnAddCategoty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:background="@color/cardview_dark_background"
+        android:padding="10dp"
+        app:srcCompat="@drawable/ic_baseline_add_circle_24"
+        tools:ignore="VectorDrawableCompat" />
 
-        <TextView
-            android:id="@+id/tvDeleteCategoryText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Select category to delete"
-            android:textAllCaps="true"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp" />
-
-        <Spinner
-            android:id="@+id/spinnerDelete"
-            android:layout_width="match_parent"
-            android:layout_height="40dp" />
-
-        <Button
-            android:id="@+id/btDeleteCategory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/holo_red_dark"
-            android:text="Delete Category"
-            android:textColor="@android:color/background_light" />
-
-    </LinearLayout>
+    <Button
+        android:id="@+id/btnUpdateInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="Update Info"
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/logout"
@@ -111,6 +98,8 @@
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="18sp" />
+
+
 
 
 </LinearLayout>

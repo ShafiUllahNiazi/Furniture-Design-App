@@ -62,7 +62,6 @@ public class Sign_in extends AppCompatActivity {
 
             Toast.makeText(this, "Please login to perform as admin ", Toast.LENGTH_SHORT).show();
         }
-//        updateUI(currentUser);
 
     }
 
@@ -72,14 +71,12 @@ public class Sign_in extends AppCompatActivity {
         String passwordd = password.getText().toString();
 
         if (TextUtils.isEmpty(emaill)) {
-//            logIn_progressBar.setVisibility(View.INVISIBLE);
             Toast.makeText(Sign_in.this, "Please Enter Email", Toast.LENGTH_SHORT).show();
             email.setError("Write Your Email");
             email.setText(null);
             return;
         }
         if (TextUtils.isEmpty(passwordd)) {
-//            logIn_progressBar.setVisibility(View.INVISIBLE);
             Toast.makeText(Sign_in.this, "Please Enter Password", Toast.LENGTH_SHORT).show();
             password.setError("Write Your Password");
             password.setText(null);
@@ -93,59 +90,28 @@ public class Sign_in extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
                             Log.d("sss", "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(Sign_in.this, "login successful ", Toast.LENGTH_SHORT).show();
                             ProgressBar.hideProgressBar();
                             startActivity(new Intent(Sign_in.this, MainActivity.class));
-//                            updateUI(user);
                         } else {
-                            // If sign in fails, display a message to the user.
-//                            Log.w(TAG, "signInWithEmail:failure", task.getException());
+
                             ProgressBar.hideProgressBar();
                             Toast.makeText(Sign_in.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-//                            updateUI(null);
                         }
 
-                        // ...
+
                     }
                 });
 
     }
 
     private void goToAdmin() {
-//        final FirebaseUser user = firebaseAuth.getCurrentUser();
-//        final String userId = user.getUid();
+
         ProgressBar.hideProgressBar();
-//        Toast.makeText(this, "id "+ userId, Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, MainActivity.class));
-//        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-//        firebaseDatabase.getReference().child("users").addValueEventListener(new ValueEventListener() {
-//
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                boolean isRider = dataSnapshot.child("Rider").hasChild(userId);
-//
-//
-//                if(isRider){
-//                    ProgressBar.hideProgressBar();
-//                    startActivity(new Intent(Sign_in.this, MainActivity.class));
-//                    finish();
-//                }else {
-//                    Toast.makeText(Sign_in.this, "No such user exist", Toast.LENGTH_LONG).show();
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//
-//
-//        });
+
     }
 
 }

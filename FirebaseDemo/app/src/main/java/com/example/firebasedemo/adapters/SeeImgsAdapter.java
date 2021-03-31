@@ -25,7 +25,7 @@ import java.util.List;
 public class SeeImgsAdapter extends RecyclerView.Adapter<SeeImgsAdapter.ViewHolder>{
     private Context mContext;
 //    int position;
-    private List<ImageInfo> mUploads;
+//    private List<ImageInfo> mUploads;
     private static int SELECTED=2;
     private static int UN_SELECTED=3;
     ImageInfo uploadCurrent11;
@@ -33,9 +33,9 @@ public class SeeImgsAdapter extends RecyclerView.Adapter<SeeImgsAdapter.ViewHold
     LinearLayout seeImgsbar;
     private  List<ImgInfoWithSelect> mImgInfoWithSelectList;
 
-    public SeeImgsAdapter(Context mContext, List<ImageInfo> mUploads, List<ImgInfoWithSelect> mImgInfoWithSelectList, String category, LinearLayout seeImgsbar) {
+    public SeeImgsAdapter(Context mContext, List<ImgInfoWithSelect> mImgInfoWithSelectList, String category, LinearLayout seeImgsbar) {
         this.mContext = mContext;
-        this.mUploads = mUploads;
+//        this.mUploads = mUploads;
         this.category = category;
         this.seeImgsbar = seeImgsbar;
         this.mImgInfoWithSelectList = mImgInfoWithSelectList;
@@ -59,6 +59,7 @@ public class SeeImgsAdapter extends RecyclerView.Adapter<SeeImgsAdapter.ViewHold
             ViewHolder viewHolder = new ViewHolder(view);
             return viewHolder;
         }
+
 //        LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
 //        View view = inflater.inflate(R.layout.layout, viewGroup, false);
 //        ViewHolder viewHolder = new ViewHolder(view);
@@ -70,38 +71,44 @@ public class SeeImgsAdapter extends RecyclerView.Adapter<SeeImgsAdapter.ViewHold
 
     @Override
     public int getItemViewType(int position) {
-        if(mImgInfoWithSelectList.get(position).isSelected()==true){
-//            Toast.makeText(mContext, "ff "+ mImgInfoWithSelectList.get(position).isSelected(), Toast.LENGTH_SHORT).show();
-            return SELECTED;
 
-        }else {
-            return UN_SELECTED;
-        }
+
+            if(mImgInfoWithSelectList.get(position).isSelected()==true){
+//            Toast.makeText(mContext, "ff "+ mImgInfoWithSelectList.get(position).isSelected(), Toast.LENGTH_SHORT).show();
+                return SELECTED;
+
+            }else {
+                return UN_SELECTED;
+            }
+
+
+
 
     }
 
 
     @Override
     public void onBindViewHolder(@NonNull SeeImgsAdapter.ViewHolder holder, final int position) {
-//        ProgressBar.showProgressBar(context,"aa","ddd");
 
-
-//        position = position1;
-//        ImageInfo uploadCurrent = mUploads.get(position);
-//        uploadCurrent11 = mUploads.get(position);
         ImageInfo uploadCurrent = mImgInfoWithSelectList.get(position).getImageInfo();
         uploadCurrent11 = mImgInfoWithSelectList.get(position).getImageInfo();
 
 
-
-        holder.imageView.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
                 Toast.makeText(mContext, "long click listener", Toast.LENGTH_SHORT).show();
 //                Toast.makeText(mContext, "pos "+position, Toast.LENGTH_SHORT).show();
                 mImgInfoWithSelectList.get(position).setSelected(!(mImgInfoWithSelectList.get(position).isSelected()));
                 notifyDataSetChanged();
-                seeImgsbar.setVisibility(View.VISIBLE);
+
+                if(isAnyItemChecked(mImgInfoWithSelectList)){
+
+                    seeImgsbar.setVisibility(View.VISIBLE);
+                }else {
+                    seeImgsbar.setVisibility(View.GONE);
+                }
+
 //                Toast.makeText(mContext, "long click \n"+ mImgInfoWithSelectList.get(position).isSelected(), Toast.LENGTH_SHORT).show();
                 return true;
             }
@@ -113,33 +120,40 @@ public class SeeImgsAdapter extends RecyclerView.Adapter<SeeImgsAdapter.ViewHold
                 Toast.makeText(mContext, "click listener", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(mContext, FullScreenImageActivity.class);
 //                intent.putExtra("imgName",mUploads.get(position).getmName());
-                intent.putExtra("imgName",mImgInfoWithSelectList.get(position).getImageInfo().getmName());
+                intent.putExtra("imgName", mImgInfoWithSelectList.get(position).getImageInfo().getmName());
 //                intent.putExtra("imgUrl",mUploads.get(position).getmImageUrl());
-                intent.putExtra("imgUrl",mImgInfoWithSelectList.get(position).getImageInfo().getmImageUrl());
+                intent.putExtra("imgUrl", mImgInfoWithSelectList.get(position).getImageInfo().getmImageUrl());
 //                intent.putExtra("mkey",mUploads.get(position).getmKey());
-                intent.putExtra("mkey",mImgInfoWithSelectList.get(position).getImageInfo().getmKey());
-                intent.putExtra("category",category);
+                intent.putExtra("mkey", mImgInfoWithSelectList.get(position).getImageInfo().getmKey());
+                intent.putExtra("category", category);
                 mContext.startActivity(intent);
 
             }
         });
 
 
-
-
 //        Toast.makeText(mContext, uploadCurrent.getmImageUrl()+"\n"+uploadCurrent.getmName(), Toast.LENGTH_SHORT).show();
 
         Picasso.get()
-                .load(mUploads.get(position).getmImageUrl())
+                .load(mImgInfoWithSelectList.get(position).getImageInfo().getmImageUrl())
                 .fit()
                 .centerInside()
                 .into(holder.imageView);
 //        ProgressBar.hideProgressBar();
     }
 
+    private boolean isAnyItemChecked(List<ImgInfoWithSelect> mImgInfoWithSelectList) {
+        for(int i= 0; i< mImgInfoWithSelectList.size();i++){
+            if(mImgInfoWithSelectList.get(i).isSelected()){
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public int getItemCount() {
-        return mUploads.size();
+        return mImgInfoWithSelectList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class CategoriesListActivity extends AppCompatActivity {
 
     ImageView ivAdmin;
     ImageView ivRefresh;
+    Button btnAboutUs;
 //    private DatabaseReference mDatabaseRef;
 
     private List<String> categorieslist;
@@ -43,10 +45,12 @@ public class CategoriesListActivity extends AppCompatActivity {
         ivAdmin = findViewById(R.id.ivAdmin);
         mRecyclerView = findViewById(R.id.categoryList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        btnAboutUs = findViewById(R.id.btnAboutUs);
         categorieslist = new ArrayList<>();
 
         categoryListAdapter = new CategoryListAdapter(CategoriesListActivity.this,categorieslist);
         mRecyclerView.setAdapter(categoryListAdapter);
+        fetchList();
 
         ivAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +66,14 @@ public class CategoriesListActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(CategoriesListActivity.this, "Refresh clicked", Toast.LENGTH_SHORT).show();
                 fetchList();
+            }
+        });
+
+        btnAboutUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CategoriesListActivity.this, DisplayContactInfo.class);
+                startActivity(intent);
             }
         });
     }

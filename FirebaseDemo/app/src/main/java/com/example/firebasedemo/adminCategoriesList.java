@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.firebasedemo.adapters.AdminCategoryListAdapter;
-import com.example.firebasedemo.adapters.CategoryListAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,7 +34,7 @@ public class adminCategoriesList extends AppCompatActivity {
         categorieslist = new ArrayList<>();
 //        categorieslist.add("sdd");
 
-        adminCategoryListAdapter = new AdminCategoryListAdapter(adminCategoriesList.this,categorieslist);
+//        adminCategoryListAdapter = new AdminCategoryListAdapter(seeCatbar, seeCatbar, adminCategoriesList.this,categorieslist);
         mRecyclerView.setAdapter(adminCategoryListAdapter);
 
     }
