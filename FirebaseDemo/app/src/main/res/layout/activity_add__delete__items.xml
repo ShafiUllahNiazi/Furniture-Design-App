@@ -11,11 +11,23 @@
         android:id="@+id/addImgs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Images " />
+        android:layout_margin="100dp"
+        android:layout_marginTop="100dp"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:text="Add Images "
+        android:textColor="@android:color/white"
+        android:textSize="30sp" />
 
     <Button
         android:id="@+id/seeImgs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="See  Images" />
+        android:layout_margin="100dp"
+        android:layout_marginTop="100dp"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:text="See  Images"
+        android:textColor="@android:color/white"
+        android:textSize="30sp" />
 </LinearLayout>
