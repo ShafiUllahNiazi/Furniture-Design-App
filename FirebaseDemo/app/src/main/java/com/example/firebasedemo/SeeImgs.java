@@ -14,7 +14,9 @@ import android.widget.Toast;
 
 import com.example.firebasedemo.adapters.HomeAdapter;
 import com.example.firebasedemo.adapters.SeeImgsAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -85,7 +87,7 @@ public class SeeImgs extends AppCompatActivity {
             }
         });
 
-        seeImgsDeleteMore.setOnClickListener(new View.OnClickListener() {
+        /*seeImgsDeleteMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                Toast.makeText(SeeImgs.this, "Delete", Toast.LENGTH_SHORT).show();
@@ -114,41 +116,70 @@ public class SeeImgs extends AppCompatActivity {
 
 
                         Toast.makeText(SeeImgs.this, "gggfg+\n"+mImgInfoWithSelectList.get(k).isSelected, Toast.LENGTH_SHORT).show();
-//                        mStorageRef.child(mImgInfoWithSelectList.get(k).imageInfo.getmName()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-//                            @Override
-//                            public void onSuccess(Void aVoid) {
-//                                Toast.makeText(SeeImgs.this, "Img Successfully Deleted", Toast.LENGTH_SHORT).show();
-//                                ProgressBar.hideProgressBar();
-//                                ProgressBar.showProgressBar(SeeImgs.this,"Deleting Images Ref","Please wait a while");
-//                                mDatabaseRef.child(mImgInfoWithSelectList.get(k).imageInfo.getmKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                    @Override
-//                                    public void onSuccess(Void aVoid) {
-//
-////                                        mImgInfoWithSelectList.remove(k);
-//
-//                                        seeImgsbar.setVisibility(View.GONE);
-//                                        ProgressBar.hideProgressBar();
-//
-//                                    }
-//                                });
-//                            }
-//                        });
-
-
-
-
-
-
 
                     }
                 }
-//                seeImgsAdapter.notifyDataSetChanged();
-//                ProgressBar.hideProgressBar();
-//                fetchImgs();
+            }
+        });*/
+
+        seeImgsDeleteMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Toast.makeText(SeeImgs.this, "Delete", Toast.LENGTH_SHORT).show();
+                ProgressBar.showProgressBar(SeeImgs.this,"Deleting Images","Please wait a while");
+                for(int i=0;i<mImgInfoWithSelectList.size();i++){
+                    k=i;
+//                    Toast.makeText(SeeImgs.this, k, Toast.LENGTH_SHORT).show();
+                    if(mImgInfoWithSelectList.get(k).isSelected){
+                        imgInfoWithSelect = mImgInfoWithSelectList.get(k);
+
+                        mStorageRef.child(imgInfoWithSelect.imageInfo.getmName()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+
+                                mDatabaseRef.child(imgInfoWithSelect.imageInfo.getmKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+//                                Toast.makeText(SeeImgs.this, "Img ref Successfully Deleted", Toast.LENGTH_SHORT).show();
+                                        seeImgsbar.setVisibility(View.GONE);
+                                        ProgressBar.hideProgressBar();
+                                        fetchImgs();
+                                        Toast.makeText(SeeImgs.this, "Img  Successfully Deleted", Toast.LENGTH_SHORT).show();
+
+                                    }
+                                });
+                            }
+                        });
 
 
 
 
+                                /*.addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                mDatabaseRef.child(imgInfoWithSelect.imageInfo.getmKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+//                                Toast.makeText(SeeImgs.this, "Img ref Successfully Deleted", Toast.LENGTH_SHORT).show();
+                                        seeImgsbar.setVisibility(View.GONE);
+                                        ProgressBar.hideProgressBar();
+                                        fetchImgs();
+                                        Toast.makeText(SeeImgs.this, "Img  Successfully Deleted", Toast.LENGTH_SHORT).show();
+
+                                    }
+                                });
+                            }
+                        });*/
+
+
+
+
+
+
+//                        Toast.makeText(SeeImgs.this, "gggfg+\n"+mImgInfoWithSelectList.get(k).isSelected, Toast.LENGTH_SHORT).show();
+
+                    }
+                }
             }
         });
 

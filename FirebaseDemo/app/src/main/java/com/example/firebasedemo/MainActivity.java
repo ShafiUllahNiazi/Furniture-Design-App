@@ -176,47 +176,8 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
 
-
-
-
-
-
-
-//                        Toast.makeText(SeeImgs.this, "gggfg+\n"+mImgInfoWithSelectList.get(k).isSelected, Toast.LENGTH_SHORT).show();
-//                        mStorageRef.child(mImgInfoWithSelectList.get(k).imageInfo.getmName()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-//                            @Override
-//                            public void onSuccess(Void aVoid) {
-//                                Toast.makeText(SeeImgs.this, "Img Successfully Deleted", Toast.LENGTH_SHORT).show();
-//                                ProgressBar.hideProgressBar();
-//                                ProgressBar.showProgressBar(SeeImgs.this,"Deleting Images Ref","Please wait a while");
-//                                mDatabaseRef.child(mImgInfoWithSelectList.get(k).imageInfo.getmKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                    @Override
-//                                    public void onSuccess(Void aVoid) {
-//
-////                                        mImgInfoWithSelectList.remove(k);
-//
-//                                        seeImgsbar.setVisibility(View.GONE);
-//                                        ProgressBar.hideProgressBar();
-//
-//                                    }
-//                                });
-//                            }
-//                        });
-
-
-
-
-
-
-
                     }
                 }
-//                seeImgsAdapter.notifyDataSetChanged();
-//                ProgressBar.hideProgressBar();
-//                fetchImgs();
-
-
-
 
             }
         });
