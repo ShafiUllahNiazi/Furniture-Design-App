@@ -60,11 +60,6 @@ public class SeeImgsAdapter extends RecyclerView.Adapter<SeeImgsAdapter.ViewHold
             return viewHolder;
         }
 
-//        LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-//        View view = inflater.inflate(R.layout.layout, viewGroup, false);
-//        ViewHolder viewHolder = new ViewHolder(view);
-//        return viewHolder;
-
     }
 
 
@@ -74,7 +69,6 @@ public class SeeImgsAdapter extends RecyclerView.Adapter<SeeImgsAdapter.ViewHold
 
 
             if(mImgInfoWithSelectList.get(position).isSelected()==true){
-//            Toast.makeText(mContext, "ff "+ mImgInfoWithSelectList.get(position).isSelected(), Toast.LENGTH_SHORT).show();
                 return SELECTED;
 
             }else {
@@ -97,8 +91,6 @@ public class SeeImgsAdapter extends RecyclerView.Adapter<SeeImgsAdapter.ViewHold
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                Toast.makeText(mContext, "long click listener", Toast.LENGTH_SHORT).show();
-//                Toast.makeText(mContext, "pos "+position, Toast.LENGTH_SHORT).show();
                 mImgInfoWithSelectList.get(position).setSelected(!(mImgInfoWithSelectList.get(position).isSelected()));
                 notifyDataSetChanged();
 
@@ -109,7 +101,6 @@ public class SeeImgsAdapter extends RecyclerView.Adapter<SeeImgsAdapter.ViewHold
                     seeImgsbar.setVisibility(View.GONE);
                 }
 
-//                Toast.makeText(mContext, "long click \n"+ mImgInfoWithSelectList.get(position).isSelected(), Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
@@ -117,7 +108,6 @@ public class SeeImgsAdapter extends RecyclerView.Adapter<SeeImgsAdapter.ViewHold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext, "click listener", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(mContext, FullScreenImageActivity.class);
 //                intent.putExtra("imgName",mUploads.get(position).getmName());
                 intent.putExtra("imgName", mImgInfoWithSelectList.get(position).getImageInfo().getmName());
@@ -131,8 +121,6 @@ public class SeeImgsAdapter extends RecyclerView.Adapter<SeeImgsAdapter.ViewHold
             }
         });
 
-
-//        Toast.makeText(mContext, uploadCurrent.getmImageUrl()+"\n"+uploadCurrent.getmName(), Toast.LENGTH_SHORT).show();
 
         Picasso.get()
                 .load(mImgInfoWithSelectList.get(position).getImageInfo().getmImageUrl())

@@ -85,7 +85,7 @@
         android:id="@+id/btnUpdateInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="#E43636"
         android:text="Update Info"
         android:textColor="@android:color/white" />
 
@@ -93,7 +93,7 @@
         android:id="@+id/logout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#000000"
+        android:background="@color/colorPrimaryDark"
         android:text="Logout"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"

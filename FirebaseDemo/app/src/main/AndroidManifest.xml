@@ -11,7 +11,7 @@
         android:roundIcon="@drawable/splash11"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UpdateContactInfo"></activity>
+        <activity android:name=".UpdateContactInfo" />
         <activity android:name=".DisplayContactInfo" />
         <activity android:name=".SeeImgs" />
         <activity android:name=".AddImgs" />

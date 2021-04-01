@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference databaseRef1;
     DatabaseReference databaseRef2;
 
-    private ValueEventListener eventListener;
-    private ValueEventListener eventListener2;
+//    private ValueEventListener eventListener;
+//    private ValueEventListener eventListener2;
 
     Button adminCategories;
 
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         seeCatDeleteMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Delete " , Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "Delete  " , Toast.LENGTH_SHORT).show();
 //                ProgressBar.showProgressBar(MainActivity.this,"Deleting Images","Please wait a while");
                 for(int i=0;i<categorieslistWithSelectInfo.size();i++){
                     k=i;
@@ -216,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
 
         databaseRef1 = FirebaseDatabase.getInstance().getReference().child("category");
         ProgressBar.showProgressBar(MainActivity.this,"Loading", "Please wait a while");
-        eventListener = databaseRef1.addValueEventListener(new ValueEventListener() {
+        databaseRef1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot != null) {
@@ -263,14 +263,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        databaseRef1.removeEventListener(eventListener);
-        databaseRef2.removeEventListener(eventListener2);
-
-
-    }
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        databaseRef1.removeEventListener(eventListener);
+//        databaseRef2.removeEventListener(eventListener2);
+//
+//
+//    }
 
 
 
@@ -295,7 +295,7 @@ public class MainActivity extends AppCompatActivity {
                     FirebaseDatabase.getInstance().getReference().child("category").push().setValue(str.toLowerCase()).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Toast.makeText(MainActivity.this, "ddsd", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(MainActivity.this, "ddsd", Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -342,4 +342,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        Toast.makeText(this, "back ", Toast.LENGTH_SHORT).show();
+//    }
 }

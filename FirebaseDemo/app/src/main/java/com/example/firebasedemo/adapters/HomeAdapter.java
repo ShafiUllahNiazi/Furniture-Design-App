@@ -46,9 +46,6 @@ public class HomeAdapter  extends RecyclerView.Adapter<HomeAdapter.ViewHolder>  
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-//        ProgressBar.showProgressBar(context,"aa","ddd");
-
-
         ImageInfo uploadCurrent = mUploads.get(position);
         uploadCurrent11 = mUploads.get(position);
 
@@ -64,8 +61,6 @@ public class HomeAdapter  extends RecyclerView.Adapter<HomeAdapter.ViewHolder>  
 
             }
         });
-
-//        Toast.makeText(mContext, uploadCurrent.getmImageUrl()+"\n"+uploadCurrent.getmName(), Toast.LENGTH_SHORT).show();
 
         Picasso.get()
                 .load(mUploads.get(position).getmImageUrl())

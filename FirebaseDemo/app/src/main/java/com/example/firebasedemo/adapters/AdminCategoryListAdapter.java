@@ -38,10 +38,6 @@ public class AdminCategoryListAdapter extends RecyclerView.Adapter<AdminCategory
     @NonNull
     @Override
     public AdminCategoryListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-//        View view = inflater.inflate(R.layout.categories_list_item, parent, false);
-//        AdminCategoryListAdapter.ViewHolder viewHolder = new AdminCategoryListAdapter.ViewHolder(view);
-//
         if(viewType==SELECTED){
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
             View view = inflater.inflate(R.layout.categories_list_item2, parent, false);
@@ -61,7 +57,6 @@ public class AdminCategoryListAdapter extends RecyclerView.Adapter<AdminCategory
     @Override
     public int getItemViewType(int position) {
         if(categorieslist.get(position).isSelected()==true){
-//            Toast.makeText(mContext, "ff "+ mImgInfoWithSelectList.get(position).isSelected(), Toast.LENGTH_SHORT).show();
             return SELECTED;
 
         }else {
